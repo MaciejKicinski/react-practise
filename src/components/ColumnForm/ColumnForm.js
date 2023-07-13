@@ -15,12 +15,12 @@ const ColumnForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} className="columnForm">
-      Title:{" "}
+      Title:
       <TextInput
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      Icon:{" "}
+      Icon:
       <TextInput
         value={icon}
         onChange={(e) => setIcon(e.target.value)}
