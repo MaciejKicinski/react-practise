@@ -4,12 +4,9 @@ import CardForm from "../CardForm/CardForm";
 import { useSelector } from "react-redux";
 
 const Column = (props) => {
-  const cards = useSelector(state => state.cards.filter(card => card.columnId === props.id));
-
-  const addCard = (columnId, newCard) => {
-    console.log("props.cards", cards);
-    props.action(columnId, newCard);
-  };
+  const cards = useSelector((state) =>
+    state.cards.filter((card) => card.columnId === props.id)
+  );
 
   return (
     <article className={styles.column}>
@@ -22,7 +19,7 @@ const Column = (props) => {
           <Card key={card.id} title={card.title} />
         ))}
       </ul>
-      <CardForm columnId={props.id} action={addCard} />
+      <CardForm columnId={props.id} />
     </article>
   );
 };
