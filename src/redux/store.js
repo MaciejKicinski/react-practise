@@ -5,7 +5,6 @@ import shortid from "shortid";
 
 export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_COLUMN":
