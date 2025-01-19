@@ -6,6 +6,8 @@ import shortid from "shortid";
 export const addColumn = (payload) => ({ type: "ADD_COLUMN", payload });
 export const addCard = (payload) => ({ type: "ADD_CARD", payload });
 export const getListById = ({ lists }, listId) => lists.find((list) => list.id === listId);
+export const getAllLists = ({ lists }) => lists;
+//export const getAllLists = (state) => state.lists;
 
 // Nowy selektor
 export const getColumnsByList = ({ columns }, listId) => 

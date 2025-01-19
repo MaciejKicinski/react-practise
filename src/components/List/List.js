@@ -1,16 +1,20 @@
+import SearchForm from "../SearchForm/SearchForm";
+import { Navigate, useParams } from "react-router";
 import styles from "./List.module.scss";
 import Column from "../Column/Column";
 import ColumnForm from "../ColumnForm/ColumnForm";
 import { useSelector } from "react-redux";
-import { getListById, getColumnsByList } from '../../../src/redux/store';;
+import { getListById, getColumnsByList } from "../../../src/redux/store";
 
 const List = () => {
+  const { listId } = useParams();
+  console.log(listId);
   // Pobieramy dane pierwszej listy
-  const listData = useSelector((state) => getListById(state, 1));
+  const listData = useSelector((state) => getListById(state, listId));
 
   // Pobieramy kolumny przypisane do pierwszej listy
-  const columns = useSelector((state) => getColumnsByList(state, 1));
-
+  const columns = useSelector((state) => getColumnsByList(state, listId));
+  if (!listData) return <Navigate to="/" />;
   return (
     <div className={styles.list}>
       <header className={styles.header}>
@@ -20,6 +24,7 @@ const List = () => {
         </h2>
       </header>
       <p className={styles.description}>{listData.description}</p>
+      <SearchForm />
       <section className={styles.columns}>
         {columns.map((column) => (
           <Column key={column.id} {...column} />
